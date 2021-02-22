@@ -1,0 +1,49 @@
+<% if Post.first.nil? %>
+  <h2 class="title">No posts yet.</h2>
+<% else %>
+  <% @posts.each do |post|%>
+    <%= link_to post do %>
+      <div class="box">
+        <div class="media">
+          <div class="media-left">
+            <p class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/64x64.png" alt="This is a placeholder image.">
+            </p>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <strong><%= post.member.name %></strong> <br />
+              <%= post.post %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if member_signed_in? && post.member.id == current_member.id%>
+      <div class="level box mb-4">
+        <div class="level-item has-text-centered">  
+          <%= link_to edit_post_path post do %>
+            <span class="icon">
+              <i class="fas fa-edit"></i>
+            </span>
+          <%end%>
+        </div>
+        <div class="is-divider-vertical" data-content="OR"></div>
+        <div class="level-item has-text-centered">
+          <%= link_to root_path do %>
+            <span class="icon">
+              <i class="far fa-comments"></i>
+            </span>
+          <%end%>
+        </div>
+        <div class="level-item has-text-centered">
+          <%= link_to post, method: :delete, data: {confirm:"Are you sure you want to delete the post?"} do %>
+            <span class="icon">
+              <i class="far fa-trash-alt"></i>
+            </span>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  <% end %>   
+<% end %>

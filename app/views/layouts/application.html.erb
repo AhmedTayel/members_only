@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MembersOnly</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"%>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <div class="navbar pl-6 is-transparent is-spaced">
+        <div class="navbar-brand">
+          <%= link_to root_path, class:'title' do%>
+           <h2 class="title">Members Only</h2>
+          <%end%>
+        </div>
+        <div class="navbar-menu navbar-end pr-6">
+          <% if member_signed_in? %>
+          
+            <%= link_to current_member.name, edit_member_registration_path, class: 'navbar-item ' %>
+            
+            
+            <%= link_to "Log out", destroy_member_session_path, method: :delete, class: 'navbar-item' %>  
+          <% else %>
+              <%= link_to 'Sign up', new_member_registration_path, class: 'navbar-item' %>
+          <% end %>
+        </div>
+      </div>
+
+
+
+
+
+    <%= yield %>
+  </body>
+</html>
