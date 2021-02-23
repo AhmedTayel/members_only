@@ -8,12 +8,14 @@
           <div class="media">
             <div class="media-left">
               <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/64x64.png" alt="This is a placeholder image.">
+                <img src="https://www.iconninja.com/files/507/766/417/avatar-ninja-face-figure-cat-icon.png" alt="This is a placeholder image.">
               </p>
             </div>
             <div class="media-content">
               <div class="content">
+                <% if member_signed_in? %>
                 <strong><%= post.member.name %></strong> <br />
+                <%end%>
                 <%= post.post %>
               </div>
             </div>
