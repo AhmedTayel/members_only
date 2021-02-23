@@ -1,11 +1,16 @@
+
 <p id="notice"><%= notice %></p>
 
 <div class="section">
   <div class="container">
     <div class="columns">
       <div class="column is-three-quarters">
-        <%= render 'new_post'%>
-        <%= render 'post'  %>
+        <% if member_signed_in? %>
+          <%= render 'new_post'%>
+          <%= render 'post'  %>
+        <%else%>
+          <%= render 'post'%>
+        <%end%>
       </div>
       <div class="column">
         <% if member_signed_in? %>

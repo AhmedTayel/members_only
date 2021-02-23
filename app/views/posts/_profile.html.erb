@@ -1,5 +1,7 @@
 <div class="panel">
-  <p class="panel-heading">Profile</p>
+  <%= link_to edit_member_registration_path do%>
+    <p class="panel-heading">Profile</p>
+  
   <div class="panel-block">
     <div class="media">
       <div class="media-left">
@@ -9,11 +11,13 @@
       </div>
       <div class="media-content">
         <div class="content">
-            <%= @member.name %>
+            <strong><%= member.name %></strong> <br />
+            <small><%= member.bio %></small>
         </div>
       </div>
     </div>
   </div>
+  <%end%>
   <div class="panel-block">
     <div class="level is-mobile">
       <div class="level-item">
